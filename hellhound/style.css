@@ -1,0 +1,253 @@
+/* ==========================================================
+   1. VARIABLES
+   ========================================================== */
+:root {
+  --black: #0B0B0B;   /* page background */
+  --bone:  #E8E2D0;   /* headings, body text, lyrics */
+  --dust:  #9A9485;   /* captions, dates, small text */
+  --brass: #B08D3C;   /* links, rules */
+  --rust:  #7A2418;   /* borders and button fills only, never text */
+  --shadow: #2b2b2b;  /* poster text-shadow */
+
+  --font-display: "Rye", "Georgia", serif;
+  --font-body: "Lora", Georgia, serif;
+
+  --unit: 8px;
+  --gutter: 24px;
+  --margin: 48px;
+  --max: 1100px;
+  --measure: 720px;
+}
+
+/* ==========================================================
+   2. BASE
+   ========================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { background: var(--black); }
+
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--brass); text-decoration: underline; }
+a:hover { color: var(--bone); }
+
+:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================
+   3. TYPOGRAPHY
+   ========================================================== */
+h1, h2, h3 {
+  margin: 0 0 calc(var(--unit) * 2);
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  line-height: 1.2;
+  color: var(--bone);
+  text-shadow: 3px 3px 0 var(--shadow);
+  overflow-wrap: anywhere;
+}
+
+h2 { font-size: clamp(28px, 7vw, 44px); }          /* section headings 44px */
+h3 { font-size: clamp(20px, 5vw, 28px);             /* subheadings 28px */
+     margin-top: calc(var(--unit) * 4); }
+
+p { margin: 0 0 calc(var(--unit) * 3); }
+
+figcaption {
+  margin-top: calc(var(--unit) * 1);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--dust);
+}
+
+/* ==========================================================
+   4. LAYOUT (12-column grid, mobile first)
+   ========================================================== */
+.container {
+  width: 100%;
+  max-width: calc(var(--max) + var(--margin) * 2);
+  margin: 0 auto;
+  padding-left: var(--margin);
+  padding-right: var(--margin);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+/* text column: max 720px, centered */
+.col-text {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: var(--measure);
+  margin: 0 auto;
+}
+
+section { padding: calc(var(--unit) * 12) 0; }
+
+.bio { border-top: 1px solid var(--brass); }
+
+.bio__text,
+.bio__photo { grid-column: 1 / -1; }
+.bio__text { max-width: var(--measure); }
+.bio__photo { margin: calc(var(--unit) * 6) 0 0; }
+
+/* ==========================================================
+   5. COMPONENTS
+   ========================================================== */
+
+/* --- Cover --- */
+.cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;              /* full viewport width (100% avoids the scrollbar overflow 100vw causes) */
+  height: 100vh;            /* full viewport height */
+  min-height: 420px;
+  padding: calc(var(--unit) * 3);
+  text-align: center;
+  /* black overlay on top of the photo; falls back to dark placeholder if cover.jpg is missing */
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url("assets/cover.jpg") center / cover no-repeat,
+    #161411;
+}
+
+.cover__quote { margin: 0; max-width: 1100px; }
+
+.cover__text {
+  margin: 0 0 calc(var(--unit) * 3);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 8vw, 96px);      /* cover quote 96px */
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  line-height: 1.15;
+  text-shadow: 4px 4px 0 var(--shadow);
+  overflow-wrap: anywhere;
+}
+
+.cover__attribution {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--bone);
+}
+
+/* --- Song --- */
+.song__title {
+  font-size: clamp(30px, 8vw, 72px);      /* song title 72px */
+  text-align: center;
+  margin-bottom: calc(var(--unit) * 6);
+}
+
+.lyrics {
+  font-size: 24px;
+  text-align: center;
+  line-height: 1.7;
+  color: var(--bone);
+  margin: 0 0 calc(var(--unit) * 4);   /* gap between stanzas */
+}
+.lyrics:last-child { margin-bottom: 0; }
+
+/* --- Biography --- */
+.bio__dates {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--dust);
+}
+
+/* --- Biography photo --- */
+.photo-frame {
+  min-height: 240px;
+  border: 1px solid var(--brass);
+  background: #141414;
+  position: relative;
+}
+.photo-frame.is-missing::before {
+  content: "photo";
+  position: absolute;
+  left: calc(var(--unit) * 2);
+  top: calc(var(--unit) * 2);
+  font-size: 16px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.photo-frame.is-missing img { display: none; }
+
+/* --- Footer --- */
+.site-footer {
+  padding: calc(var(--unit) * 6) 0 calc(var(--unit) * 14);  /* room so the mute button never covers text */
+  border-top: 1px solid var(--brass);
+  font-size: 16px;
+  color: var(--dust);
+}
+.site-footer p { margin-bottom: var(--unit); }
+
+/* --- Mute button: fixed, always visible --- */
+.mute-btn {
+  position: fixed;
+  right: calc(var(--unit) * 2);
+  bottom: calc(var(--unit) * 2);
+  z-index: 1000;
+  padding: var(--unit) calc(var(--unit) * 2);
+  min-width: 96px;
+  min-height: 44px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--bone);
+  background: var(--rust);
+  border: 2px solid var(--brass);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.mute-btn:hover { background: var(--black); }   /* plain color change only */
+.mute-btn:focus-visible { outline: 3px solid var(--bone); outline-offset: 3px; }
+
+/* ==========================================================
+   6. RESPONSIVE (enhancements from 600px and 1000px)
+   ========================================================== */
+@media (min-width: 600px) {
+  .cover { padding: calc(var(--unit) * 6); }
+  .mute-btn { right: calc(var(--unit) * 3); bottom: calc(var(--unit) * 3); }
+}
+
+@media (min-width: 1000px) {
+  .bio__text  { grid-column: 1 / span 7; }
+  .bio__photo { grid-column: 9 / span 4; margin-top: 0; }
+}
+
+/* ==========================================================
+   7. REDUCED MOTION (the site has no animation; this is a safeguard)
+   ========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hellhound on My Trail — Robert Johnson Tribute</title>
+  <meta name="description" content="A one-page tribute to Robert Johnson and his song &quot;Hellhound on My Trail&quot;.">
+  <meta name="color-scheme" content="dark">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Rye&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. COVER -->
+  <header class="cover">
+    <h1 class="visually-hidden">Hellhound on My Trail — a tribute to Robert Johnson</h1>
+    <blockquote class="cover__quote">
+      <p class="cover__text">Robert Johnson was like an orchestra all by himself.</p>
+      <footer class="cover__attribution">- Keith Richards</footer>
+    </blockquote>
+  </header>
+
+  <main>
+    <!-- 2. SONG -->
+    <section class="song" id="song" aria-labelledby="song-title">
+      <div class="container">
+        <div class="col-text">
+          <h2 id="song-title" class="song__title">Hellhound on My Trail</h2>
+          <!-- Lyrics from lyrics.txt, one <br> per line, one <p> per stanza. -->
+          <p class="lyrics">I got to keep movin', I got to keep movin'<br>
+            Blues fallin' down like hail, blues fallin' down like hail<br>
+            Hmm-mmm, blues fallin' down like hail, blues fallin' down like hail</p>
+          <p class="lyrics">And the days keeps on worryin' me<br>
+            There's a hellhound on my trail, hellhound on my trail<br>
+            Hellhound on my trail</p>
+          <p class="lyrics">If today was Christmas Eve, if today was Christmas Eve<br>
+            And tomorrow was Christmas Day<br>
+            If today was Christmas Eve, and tomorrow was Christmas Day<br>
+            Aw, wouldn't we have a time, baby?</p>
+          <p class="lyrics">All I would need my little sweet rider just<br>
+            To pass the time away, huh-huh<br>
+            To pass the time away</p>
+          <p class="lyrics">You sprinkled hot foot powder, mmm<br>
+            Mmm, around my door, all around my door<br>
+            You sprinkled hot foot powder<br>
+            All around your daddy's door, hmm-hmm-hmm</p>
+          <p class="lyrics">It keep me with ramblin' mind, rider<br>
+            Every old place I go, every old place I go</p>
+          <p class="lyrics">I can tell the wind is risin', the leaves tremblin' on the tree<br>
+            Tremblin' on the tree<br>
+            I can tell the wind is risin', leaves tremblin' on the tree<br>
+            Hmm-hmm, hmm-mmm</p>
+          <p class="lyrics">All I need's my little sweet woman<br>
+            And to keep my company, hey, hey, hey<br>
+            My company</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. BIOGRAPHY -->
+    <section class="bio" id="biography" aria-labelledby="bio-title">
+      <div class="container bio__grid">
+        <div class="bio__text">
+          <h2 id="bio-title">Biography</h2>
+          <p class="bio__dates">Robert Johnson (1911&ndash;1938)</p>
+
+          <h3>Early Life</h3>
+          <p>Robert Leroy Johnson was born on May 8, 1911, in Hazlehurst, Mississippi, and grew up around Memphis and the Mississippi Delta. He took up the guitar as a young man and traveled the Delta playing juke joints, parties and street corners.</p>
+
+          <h3>The Recordings</h3>
+          <p>In 1936 and 1937 he made his only recordings, in two sessions in San Antonio and Dallas. They produced 29 songs, including &ldquo;Cross Road Blues&rdquo; and &ldquo;Hellhound on My Trail.&rdquo; He died on August 16, 1938, at age 27, near Greenwood, Mississippi. The cause of his death was never confirmed.</p>
+
+          <h3>Legacy</h3>
+          <p>During his lifetime he was little known outside the blues circuit. That changed in 1961, when a reissue of his recordings introduced him to a new audience. His playing and songwriting went on to influence Eric Clapton, the Rolling Stones and many others.</p>
+
+          <h3>The Legend</h3>
+          <p>The story that he sold his soul to the devil at a crossroads is a legend that grew up after his death. There is no record that he ever told it himself.</p>
+        </div>
+
+        <figure class="bio__photo">
+          <div class="photo-frame">
+            <img src="assets/johnson.jpg" alt="Black-and-white photo-booth portrait of a man holding a guitar, a cigarette in his mouth">
+          </div>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <!-- 4. FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="col-text">
+        <p>Hellhound on My Trail, a tribute to Robert Johnson.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AUDIO -->
+  
+  <audio id="song-audio" src="assets/hellhound.mp3" preload="auto"></audio>
+  <button type="button" id="mute-btn" class="mute-btn" aria-pressed="false">Mute</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
